@@ -4,25 +4,32 @@
 
 int main() {
 	int testCase;
+	int tcase;
 	scanf("%d",&testCase);
-	for(int tcase = 0;tcase<testCase; tcase++){
+	for(tcase = 0;tcase<testCase; tcase++){
 	    
 	    int climb,fall,totalWalls,heights[1000],totalJump=0;
 	    scanf("%d %d %d",&climb,&fall,&totalWalls);
-	    
-	    for(int j=0; j<totalWalls; j++){
+	    int j;
+	    for(j=0; j<totalWalls; j++){
 	        scanf("%d",&heights[j]);
 	    }
-	    //int move = climb-fall;
-
-	    for(int i=0; i<totalWalls; i++)
+	    int move = climb-fall;
+        int i;
+	    for(i=0; i<totalWalls; i++)
         {
             
             if (climb<heights[i])
             {
-                int jumpPerState = heights[i]/climb;
+                int jumpPerState = heights[i]/move;
                 //jumpPerState = jumpPerState * 
-                totalJump = totalJump + jumpPerState + 1;
+                if(heights[i]%move==0){
+                    totalJump = totalJump + jumpPerState;
+
+                }
+                else{
+                    totalJump = totalJump + jumpPerState + 1;
+                }
                 
             }
             else{
@@ -34,6 +41,7 @@ int main() {
 	}
 	return 0;
 }
+
 input:
 1
 9 6 79
